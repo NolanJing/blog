@@ -1,0 +1,132 @@
+---
+layout: page
+title: "About"
+description: "Hey, this is Nolan."
+header-img: "img/about-bg.jpg"
+---
+
+<!-- Language Selector -->
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <option value="1"> 英语 English </option>
+</select>
+
+<!-- Chinese Version -->
+<div class="zh post-container">
+    <blockquote> 
+        传变量起名，域名占星 
+        招聘码农相面，上线日期择吉 
+        奇门遁甲推死线，辟邪镇宅驱爆栈 
+        开光显示器键盘SSD，代写注释文档PPT
+
+        修电脑、装系统、设置路由器、疏通下水道。上门服务 价格公道
+        <br> 
+        电话：23232333 
+    </blockquote>
+    <div><p>男人的浪漫当然不是舰娘，男人的浪漫当然是钻头和扎古，是钢铁巨舰，是排枪下身边的战友纷纷倒下，依然迎着枪林弹雨慢慢前进。。</p><p>然而扎古和钻头就是全部吗？图样，扎古和巨舰只是表象，背后隐藏的美学理念是<b>大就是好，多就是美</b>。男人的浪漫是刚毅、英勇、无畏、是tough，是以弱胜强，是赤手空拳打出一片天下，所以男人的浪漫跟爱情几乎没有一点关系。男人要有一种态度，无论全世界是反对还是赞成，都有自己的态度。通常，我们将这种浪漫称之为<b>中二。</b></p><br><p><b>男人的浪漫应该是“男儿到死心如铁，看试手，补天裂。”</b>是项羽被围垓下，百骑也要杀个七进七出；是张翼德独立于长坂桥头，面对百万曹军也要报上名号；是关羽封侯拜将，也要挂印封金，斩关而去，是沧海横流方显英雄本色。</p><br><p><b>男人的浪漫应该是“黄沙百战穿金甲，不破楼兰终不还”。</b>是霍去病深入千里，幕北无王庭，封狼居胥；是马伏波马革裹尸，是诸葛孔明深入不毛，是不能流芳百世，亦当遗臭万年，是好男儿不负好时光。</p><br><p><b>男人的浪漫应该是“事了拂身去深藏功与名”。</b>是权倾天下依旧想做汉征西将军，是富可敌国后依然敢倾尽所有孤注一掷，是达到人生顶点后不忘初心。</p><br><p>男人的浪漫是用生死搏杀来表达惺惺相惜，是对手占据先机也只问他是不是真正的西西里人，当一个浪漫的男人遇到另一个浪漫的男人，不问家世门第、不看美服华饰，只看胸襟怀抱，道一声：天下英雄，唯使君与操耳。继而彼此拔剑出手，该是男人心底最深的浪漫吧。</p> </div>
+
+    <p style="text-align:right;">
+        —— <a href="https://www.zhihu.com/question/24677885/answer/30096852">大盗贼霍老爷 － 「男人的浪漫」是什么？ </a>
+    </p>
+
+</div>
+
+<!-- English Version -->
+<div class="en post-container">
+    <blockquote>
+        Designer or Engineer, things in between.
+    </blockquote>
+
+    <p>
+        Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven’t found it yet, keep looking. Don’t settle. As with all matters of the heart, you’ll know when you find it.
+    </p>
+
+    <p>
+    If you want to live your life in a creative way, as an artist, you have to not look back too much. You have to be willing to take whatever you’ve done and whoever you were and throw them away.
+    </p>
+
+    <p style="text-align:right;">
+    -- Steve Jobs
+    </p>
+
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    function onLanChange(index){
+        if(index == 0){
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }else{
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        }
+    }
+    onLanChange(0);
+</script>
+
+
+
+{% if site.duoshuo_username %}
+<!-- 多说评论框 start -->
+<div class="comment">
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
+
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- Duoshuo hacking -->
+<input id="dsUser" type="hidden" value="{{site.duoshuo_username}}"  />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = document.getElementById('dsUser').value;
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
+
+
+{% if site.disqus_username %}
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}

@@ -1,0 +1,78 @@
+---
+layout:     post
+title:      "JS手撸数据结构系列 (一) ——从快排搞起"
+subtitle:   ""
+date:       2017-04-20 12:00:00
+author:     "Nolan"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - Javascript
+    - 数据结构
+    - 算法
+---
+
+当初我还是一个无忧无虑开开心心的写着弱智代码的蒜头。上面这句话就是我的座右铭，敲代码需要学算法和数据结构？不存在！实现一些业务逻辑，if-else搞定，遍历个对象， 遍历个数组，遍历个对象内的数组，大不了我加一层for循环，拿起键盘就是干！
+
+直到被残酷的现实，代码敲着敲着你就会发现，数据结构是绕不过去的坎，不是计算机科班的人来说必须要硬啃了，所以就一遍学习一遍啃书本吧。毕竟之前唯一能手写的算法，只有冒泡排序.....
+那就先从快排搞起吧，
+****
+- 快排的基本算法：
+ - 先从数列中取出一个数作为基准数（pivot）。
+ - 通过一趟排序将要排序的数据分割成独立的左区间和右区间两部分。
+ - 再对左右区间重复第二步，直到各区间只有一个数。
+- **注意事项**
+ - 基准数选取区间内第一个元素的话，是一个很容易想到，但是很愚蠢的决定。
+   如果输入是预排序的或者反序的，那么这个基准数的就产生了一个劣质的分割，如果一开始就把最大的数选成基准数的话，快排就和冒泡没什么区别了。都是$O(n^2)$
+   - 一种安全的做法是在开始，中间，结尾选取三个数然后取平均值， pivot =（start + mid + end）/3
+
+```javascript
+
+    let array = [8,4,6,10,7,1,3];
+    // var array = [1,2,44,4,65,6,34,5,13,88,485,61]
+	function recurseSort(arr) {
+			if (arr.length === 1){
+			 // 递归跳出条件
+				return arr;
+			} else {
+             
+           let left = 0,
+               len = arr.length,
+               right = len-1,
+               mid = Math.ceil((right + left)/2),
+               pivot = Math.ceil((arr[left] + arr[right] + arr[mid])/3),
+               arrLeft = [];
+               arrRight = [];
+
+           for (let i = 0; i < len; i++) {
+           	if(arr[i]<pivot){
+           	  arrLeft.push(arr[i]);
+           	} else{
+           	  arrRight.push(arr[i]);
+           	}                	
+           }       
+
+           console.log('pivot = ' + pivot);           
+           console.log(' rightArr -> ' + arrRight);               
+           console.log(' LeftArr -> ' +arrLeft); 
+           console.log(' '); 
+
+           return recurseSort(arrRight).concat(recurseSort(arrLeft))
+			}
+		}
+
+   console.log(array);
+   console.log(recurseSort(array));
+
+
+```
+## 运行结果
+![result](http://img.blog.csdn.net/20170423214638015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2Nhcmd0dA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+## 优化空间
+- C语言写的快排是在一个数组内操作，而我们写的理解倒是很好理解，但是既耗内存又很慢。
+- 如果输入数组中存在相同的元素，例如 array = [8,4,8,10,7,1,3] 会出现死循环情况。
+
+
+> 没有什么算法是一层循环搞不定的，如果有，就再来一层。                  
+>                        —— *欧阳蒜苗*
+
