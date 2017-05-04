@@ -1,0 +1,125 @@
+---
+layout:     post
+title:      "[Laravel 5.2]二、注册、登陆及用户认证"
+subtitle:   "Keynote: PHP Laravel5.2"
+date:       2016-05-16
+author:     "Nolan"
+header-img: "img/post-bg-js-module.jpg"
+tags:
+    - PHP
+---
+## <span style="font-size:18px"><span style="line-height:20px">    Laravel中实现用户登录认证</span><span style="line-height:20px">非常简单。实际上，几乎所有东西都已经为你配置好了。 对于绝大多数应用而言，只需使用默认认证配置即可，不需要做什么改动。下面说一下我用Laravel5.2 实现的流程，不愧为最优雅的php框架，一共写了不超过50行代码搞定。</span></span>
+
+## <span style="color:rgb(51,51,51); font-size:18px; font-family:Arial,Helvetica,sans-serif; line-height:20px"><span style="font-family:'Helvetica Neue',Helvetica,Arial,'Hiragino Sans GB','Hiragino Sans GB W3','WenQuanYi Micro Hei','Microsoft YaHei UI','Microsoft YaHei',sans-serif">    Laravel 5.2提供了两个开箱即用的用户认证(Authentication</span></span><span style="color:rgb(51,51,51); font-size:18px; line-height:20px">)控制器，用来判断用户是否登录。位于       </span>`App\Http\Controllers\[Auth](http://laravelacademy.org/tags/auth "View all posts in Auth")`<span style="color:rgb(51,51,51); font-size:18px; line-height:20px"> 命名空间下，</span>`AuthController`<span style="color:rgb(51,51,51); font-size:18px; line-height:20px"> 处理新用户</span>[注册](http://laravelacademy.org/tags/%e6%b3%a8%e5%86%8c "View all posts in 注册")<span style="font-size:18px; line-height:20px"><span style="color:#333333">和</span><span style="color:#ff6666">登陆</span></span><span style="color:rgb(51,51,51); font-size:18px; line-height:20px">， </span>`PasswordController`<span style="color:rgb(51,51,51); font-size:18px; line-height:20px"> 用于帮助用户找回密码。每个控制器都使用 trait 来引入它们需要的方法。对很多应用而言，你根本不需要修改这两个控制器。</span>
+
+<div><span style="line-height:20px"><span style="font-size:18px">
+</span></span></div>
+
+<div><span style="font-size:18px"><span style="line-height:20px"></span></span>
+
+<span style="font-size:18px">    Laravel 通过运行如下artisan命令可快速生成认证所需要的路由和视图：</span>
+
+```
+ php artisan make:auth
+```
+
+<span style="font-size:18px">    运行该命令会生成注册和登录视图，以及所有的认证路由，同时生成 `HomeController` ，因为登录成功后会跳转到该控制器下的动作。 全自动新手大礼包......</span>
+
+<span style="font-size:18px">
+<img src="http://img.blog.csdn.net/20160520121914374?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"   alt="迷宫最短路径csdn."/>
+
+</span>
+
+#### <span style="color:rgb(51,51,51); font-size:18px; line-height:19.8px"></span> <span style="color:rgb(51,51,51); line-height:20px; font-size:18px">正如上面所提到的，</span>`php artisan make:auth`<span style="color:rgb(51,51,51); line-height:20px; font-size:18px"> 命令会在 </span>`resources/views/auth`<span style="color:rgb(51,51,51); line-height:20px; font-size:18px"> 目录下创建所有认证需要的视图。</span>`make:auth`<span style="color:rgb(51,51,51); line-height:20px; font-size:18px"> 命令还创建了 </span>`resources/views/layouts`<span style="line-height:20px; font-size:18px"><span style="color:#333333"> 目录，该目录下包含了应用的基础布局文件</span><span style="color:#ff6666">app.blade.php</span>。<span style="color:#333333">所有这些视图都使用了 Bootstrap CSS 框架，你也可以根据需要对其进行自定义。不过相信我，以绝大多数的程序员审美，都没有自带带样板好看.........</span></span>
+
+<div><span style="line-height:20px; font-size:18px"><span style="color:#333333">
+<img src="http://img.blog.csdn.net/20160520120706494?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"/>
+
+</span></span></div>
+
+<div><span style="line-height:20px; font-size:18px"><span style="color:#333333">
+</span></span></div>
+
+<span style="font-size:18px">    如果注册时，没有反应，数据库没有存进数据，可能打印出错误信息，如你注册用户名小于3位不合规范。以登陆为例，laravel 的默认要求是：</span>
+
+<span style="font-size:18px"></span>
+
+<pre name="code" class="php">  return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);</pre>
+
+<div><span style="font-size:18px">    即：用户名和<span style="font-size:18px">Email地址</span>是必填项，最大为255字节。email也必须为email格式并且是独一无二的，不能和已注册用户相同。密码不能少于6位且需要再次确认。这和我们平时见到注册一样，很好理解。</span></div>
+
+</div>
+
+<div><span style="font-size:18px">
+</span></div>
+
+<div><span style="font-size:18px; line-height:20px">    如果自己写按钮和样式的话，可以使用如下代码逻辑：</span></div>
+
+####
+
+<pre name="code" class="php"><span style="font-size:18px;">@if (Auth::guest()){
+             <a href="{{ url('/login') }}">登陆</a>
+             <a href="{{ url('/register') }}"">注册</a> </span></pre>
+
+<pre name="code" class="php"><span style="font-size:18px;">}
+@else{
+{{ Auth::user()->name }}  <a href="{{ url('/logout') }}"class="n2">登出</a>
+  }
+@endif      //如果用户访客登陆，则显示登陆/注册。如果已登陆，则显示用户名/登出。</span></pre>
+
+<span style="font-size:18px">
+<span style="font-family:inherit; font-style:inherit; line-height:1.1">Home视图</span></span>
+
+<span style="font-size:18px"><span style="color:#333333">      同时Laravel也自动生成了 </span><span style="color:#ff6666">HomeController控制器</span>，和 <span style="color:#ff6666">home视图 </span></span><span style="color:rgb(51,51,51); font-size:18px">当一个用户成功进行登录认证后，默认将会跳转到</span>`/home`<span style="color:rgb(51,51,51); font-size:18px">，你可以通过在 </span>`AuthController`<span style="color:rgb(51,51,51); font-size:18px"> 中设置 </span>`redirectTo`<span style="color:rgb(51,51,51); font-size:18px">属性来自定义登录认证成功之后的跳转路径：</span>
+
+```
+protected $redirectTo = '/home';
+```
+
+<span style="font-size:18px">而当一个用户登录认证失败后，则会默认 跳转回登录表单对应的页面重新登陆。</span>
+
+##### <span style="font-size:18px">
+</span>
+
+##### <span style="border:0px; font-family:inherit; font-style:inherit; margin:0px; outline:0px; padding:0px; vertical-align:baseline"><span style="font-size:18px">       判断当前用户是否通过认证</span></span>
+
+<span style="font-size:18px">要判断某个用户是否登录到应用，可以使用 `Auth` 的 `check`方法，如果用户通过认证则返回 `true`：</span>
+
+```
+if (Auth::check()) {
+    // The user is logged in...
+}
+```
+
+<span style="font-size:18px">      我按照上面的方法，设置好登陆按钮，但是登陆后再点击原来的首页，就会报出如下错误：</span>
+
+<pre name="code" class="plain"><span style="font-size:18px;">FatalErrorException in ClassLoader.php line 314:
+Maximum function nesting level of '100' reached, aborting! </span></pre>
+
+<span style="font-size:18px">
+</span>
+
+<span style="font-size:18px">    这时候删除cookies，就可以去除登陆状态，再登陆就正常了。我猜想是系统登陆后状态有变化，却没有判断用户状态引发的错误，所一我每个页面都加了下面这三行代码，笨人有笨方法吧.....反正不再报错了~~</span>
+
+<pre name="code" class="php"><span style="font-size:18px;">@if (Auth::check())  //检查用户认证，但什么也不做......
+@else
+@endif</span></pre>
+
+<span style="font-size:18px"><span style="font-size:18px">
+</span></span>
+
+<span style="font-size:18px"><span style="font-size:18px">用户授权</span></span>
+
+<span style="font-size:18px">    这也引出了用户授权问题(<span style="color:#ff6666">Authorization</span>),即用户登录后的身份识别问题，以便后续的用户权限控制。</span><span style="font-family:inherit; font-size:18px; color:rgb(51,51,51); line-height:1.1; border:0px; font-style:inherit; margin:0px; outline:0px; padding:0px; vertical-align:baseline">其余路由保护、</span><span style="font-family:inherit; font-size:18px; color:rgb(51,51,51); line-height:1.1; font-style:inherit">登录失败次数限制、使用Facebook、微博登陆等 都有非常简便的实现方法。大家可以去看官方文档自己研究。</span>
+
+<span style="font-family:inherit; font-size:18px; color:rgb(51,51,51); line-height:1.1; font-style:inherit">
+</span>
+
+<span style="font-family:inherit; font-size:18px; color:rgb(51,51,51); line-height:1.1; font-style:inherit">.....待续....</span>
+
+#### <span style="font-size:18px">
+</span>

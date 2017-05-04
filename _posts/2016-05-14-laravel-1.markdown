@@ -1,0 +1,78 @@
+---
+layout:     post
+title:      "[Laravel 5.2]一、安装与环境配置"
+subtitle:   "Keynote: PHP Laravel5.2"
+date:       2016-05-14
+author:     "Nolan"
+header-img: "img/post-bg-js-module.jpg"
+tags:
+    - PHP
+---
+1.安装wamp //注意版本限制 其中PHP在5.5以上 laravel 需要用到其中特性
+
+2 安装composer
+
+3安装larvel
+
+4设置apache 
+
+1）在E:\wamp\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conof
+
+<pre name="code" class="html"><pre name="code" class="plain"><VirtualHost *:80>
+DocumentRoot "E:\wamp\www\project\public"
+ServerName laravel.dev
+ErrorLog "logs/laravel.log"
+CustomLog "logs/laravel.log" common
+</VirtualHost></pre>
+
+2) <span style="color:rgb(119,119,119); font-family:'Helvetica Neue',Helvetica,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,SimSun,sans-serif; font-size:13px; line-height:1.8">httpd.conf 把虚拟主机启动</span>
+
+<span style="color:rgb(119,119,119); font-family:'Helvetica Neue',Helvetica,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,SimSun,sans-serif; font-size:13px; line-height:1.8"></span>
+
+<pre name="code" class="plain"># Virtual hosts#Include conf/extra/httpd-vhosts.conf</pre>
+
+把第二个# 也就是Include 前面的#去掉
+
+<span style="color:rgb(119,119,119); font-family:'Helvetica Neue',Helvetica,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,SimSun,sans-serif; font-size:13px; line-height:1.8">3）改host  路径</span><span style="color:rgb(119,119,119); font-family:'Helvetica Neue',Helvetica,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,SimSun,sans-serif; font-size:13px; line-height:1.8">C:\Windows\System32\drivers\etc\host</span>
+
+<span style="color:rgb(119,119,119); font-family:'Helvetica Neue',Helvetica,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,SimSun,sans-serif; font-size:13px; line-height:1.8"></span>
+
+<pre name="code" class="plain">127.0.0.1       laravel.dev</pre>
+
+ps:如果更改host 没有权限，就用管理员权限启动记事本，然后打开host修改
+
+4）打开   laravel.dev
+出现欢迎页面
+
+5)可能会出现  laravel.dev可以运行，但是laravel.dev/about 出现404报错
+
+这时 修改 <span style="color:rgb(119,119,119); font-family:'Helvetica Neue',Helvetica,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,SimSun,sans-serif; font-size:13px; line-height:23.4px">httpd.conf</span>
+
+<pre name="code" class="plain"><Directory "D:\WAMP\laravel\public">
+    Options Indexes FollowSymLinks
+    #
+
+    # AllowOverride controls what directives may be placed in .htaccess files.
+
+    # It can be "All", "None", or any combination of the keywords:
+
+    #   Options FileInfo AuthConfig Limit
+
+    #此处必须为all none不行
+
+    AllowOverride All
+    #
+
+    # Controls who can get stuff from this server.
+
+    #
+
+    #Require all granted
+
+    #Allow Order not supported
+
+    Allow from all
+
+    Require all granted
+
+</Directory></pre>
