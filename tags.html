@@ -7,6 +7,7 @@ header-img: "img/tag-bg.jpg"
 
 <!-- Page Header -->
 <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+	<span>sssss</span>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -16,6 +17,29 @@ header-img: "img/tag-bg.jpg"
                 </div>
             </div>
         </div>
+
+		{% if page.title ==  "About" %}
+		<section class="jumbotron">
+			<div class="container">
+				<div id="jumbotron-meta-info">
+            <span class="meta-info">
+                <span class="octicon octicon-location"></span>
+                <i class="fa fa-location-arrow"></i>
+                <a>GuangDong, China</a>
+            </span>
+					<span class="meta-info hvr-grow">
+                <span class="octicon octicon-organization"></span>
+                <i class="fa fa-university"></i>
+                <a href="http://www.gfi.fr/en/" target="_blank">Sun Yat-sen University</a>
+            </span>
+					<span class="meta-info hvr-grow">
+                <i class="fa fa-github-square"></i>
+                <a href="https://github.com/NolanJing" target="_blank">@Nolan Jing</a>
+            </span>
+				</div>
+			</div>
+		</section>
+		{% endif %}
     </div>
 </header>
 

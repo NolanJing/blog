@@ -1,7 +1,8 @@
 # Site settings
 title: Nolan Blog
-SEOTitle: 蒜头的博客 | Nolan Blog
-header-img: img/home-bg-o.jpg
+uptitle: 欧阳蒜苗
+SEOTitle: 欧阳蒜苗 | Nolan Blog
+header-img: img/home-bg-blur.jpg
 email: scargtt@163.com
 description: ""
 keyword: ""
@@ -12,11 +13,11 @@ baseurl: "/blog"         # for example, '/blog' if your blog hosted on 'host/blo
 
 # SNS settings
 RSS: false
-weibo_username:     NolanJing
+# weibo_username:     NolanJing
 zhihu_username:     nolan-jing
 github_username:    NolanJing
-#twitter_username:  huxpro
-facebook_username:  NolanJing
+#twitter_username:  nolanpro
+#facebook_username:  NolanJing
 
 
 
@@ -50,7 +51,7 @@ kramdown:
 #disqus_username: _your_disqus_short_name_
 
 # Duoshuo settings
-# duoshuo_username: huxblog
+# duoshuo_username: nolanblog
 # Share component is depend on Comment so we can NOT use share only.
 # duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
@@ -68,8 +69,8 @@ kramdown:
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "写写代码，做做设计，看看产品。世界那么大，多玩玩看看。"
-sidebar-avatar: "https://images.nowcoder.com/images/20170331/2864428_1490963494677_0564D4EC4885448FC55B26B11C1AE743@0e_100w_100h_0c_1i_1o_90Q_1x"     # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "继承，是幸福的延续；重载，是幸福的重生。"
+sidebar-avatar: "https://avatars3.githubusercontent.com/u/19199649?v=3&s=460"     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -82,19 +83,19 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 # Friends
 friends: [
     {
-        title: "Hux Blog",
-        href: "http://huangxuan.me"
+        title: "nolan Blog",
+        href: "#"
     },{
         title: "VerilogOJ",
-        href: "nanjiang.online.com"
+        href: "http://52.77.197.38:2017/"
     },{
-        title: "Bar",
-        href: "#"
+        title: "Draw-Somthing",
+        href: "http://52.77.197.38:3000/"
     },{
         title: "Example Friends",
         href: "#"
     },{
-        title: "It helps SEO",
-        href: "#"
+        title: "SEO",
+        href: "https://nolanjing.github.io/blog/"
     }
 ]
