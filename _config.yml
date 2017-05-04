@@ -48,7 +48,7 @@ kramdown:
 
 
 # Disqus settings
-#disqus_username: _your_disqus_short_name_
+disqus_username: NolanJing
 
 # Duoshuo settings
 # duoshuo_username: nolanblog
@@ -56,20 +56,9 @@ kramdown:
 # duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
 
-
-
-# Analytics settings
-# Baidu Analytics
-#ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
-# Google Analytics
-#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-#ga_domain: huangxuan.me
-
-
-
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "继承，是幸福的延续；重载，是幸福的重生。"
+sidebar-about-description: "继承，是幸福的延续 <br>重载，是幸福的重生"
 sidebar-avatar: "https://avatars3.githubusercontent.com/u/19199649?v=3&s=460"     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 

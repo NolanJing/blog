@@ -1,24 +1,25 @@
 /** Jumbotron **/
-.jumbotron {
-    /*padding-top: 200px;
-    padding-bottom: 100px;
-    color: #fff;*/
+#info {
+    /*padding: 5px 10px 5px 5px;*/
+    position: relative;
 
+    top: 50px;
+}
+#info span{
+    display: inline-block ;
+    /*line-height: 40px;*/
 }
 
-.jumbotron a {
+#info a {
     color: #fff;
     text-decoration: none;
+    margin-right: 15px;
 }
-.jumbotron #jumbotron-meta-info {
-    margin-top: 20px;;
+#info a i{
+    margin-right: 5px;
+}
+#info a:hover {
+    color: #337ab7;
 }
 
-.jumbotron .meta-info {
-    font-size: 20px;
-    margin-right: 15px
-}
 
-.jumbotron.meta-info, .jumbotron .meta-info .octicon {
-    font-size: 18px;
-}
