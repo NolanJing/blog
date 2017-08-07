@@ -65,9 +65,9 @@ function prePrint(tree) {
 		   str =str + '->' + tree.value;
 		   // 如果想改成后续遍历
 		   // 只要把下面三行语句顺序换一下就可以
-           getChild(tree.left) 
-           getChild(tree.right)
-           return str
+                   getChild(tree.left)
+                   getChild(tree.right)
+                   return str
 		}	 		 	
 	 } 
 	 return getChild(tree);
@@ -79,9 +79,9 @@ function postPrint(tree){
 		if(!tree){           
            //  return 
 		} else {
-			 getChild(tree.left); 
-             getChild(tree.right);
-			 str = str + '->' + tree.value;                    
+           getChild(tree.left);
+           getChild(tree.right);
+           str = str + '->' + tree.value;
            return str;
 		}	 		 	
 	 } 

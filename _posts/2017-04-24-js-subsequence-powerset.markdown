@@ -53,26 +53,24 @@ var arr = [1, 2, 3];
 
  function getPowerSet(i, listA) {
 
- 	let listB = [];
+   let listB = [];
 
    function recurse(i, listA) {
 
-		if(i > listA.length - 1){
-		        //输出当前Ｂ值，即幂集里的一个元素
-		    console.log('set: ' + listB);
-		      	
-		} else {
-		     var x = listA[i];
-		     listB.push(x);
-		     recurse(i+1, listA);
-	         listB.pop(x);
-	         recurse(i+1, listA);
-	    }
+       if(i > listA.length - 1){
+          //输出当前Ｂ值，即幂集里的一个元素
+          console.log('set: ' + listB);
+       } else {
+         var x = listA[i];
+         listB.push(x);
+         recurse(i+1, listA);
+         listB.pop(x);
+         recurse(i+1, listA);
+       }
     }
       
   recurse(i, listA);
 
- 	// body...
  }
  
 getPowerSet(0, arr)
@@ -101,9 +99,9 @@ let arr = ['a', 'b', 'c', 'd'];
 let list = [''];
 
 for(var i = 0, len = arr.length; i<len ; i++ ){
-	 list.forEach(x => {
-	 		list.push(x + arr[i]);		 		
-	 }); 	 
+  list.forEach(x => {
+    list.push(x + arr[i]);
+  });
 }
 
 console.log(list.sort()); // 排序一下，方便查看
