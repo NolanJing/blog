@@ -41,19 +41,19 @@ tags:
   * bc 中 b 和 b 交换  => cb
 
 现在第一位已经确定为 a 了，第二位确定为 b ，只剩下个 c ，不用再进行挑选字符了，直接输出abc就得出一种结果。
+我们把上面的过程归纳为计算机可以理解的算法。
 
-显然，上面的算法是行得通的，我们把它变成代码表示吧。
-
-
-``` javascript
-/*
 全排列（递归交换）算法
 1、将第一个位置分别放置各个不同的元素；
 2、对剩余的位置进行全排列（递归）；
 3、递归出口为只对一个元素进行全排列。
-*/
 
-// 交换arr数组的第i位和第j位
+
+``` javascript
+
+/**
+* 将数组第i位和第j位交换
+**/
 function swap(arr,i,j) {
     if(i!=j) {
         var temp=arr[i];
@@ -62,7 +62,9 @@ function swap(arr,i,j) {
     }
 }
 
-// index 就是选第index位的字符
+/**
+* @index 就是选第index位的字符
+**/
 function allRange(arr, index) {
     if(index == arr.length-1) {
          console.log(arr)
@@ -105,7 +107,6 @@ allRange(['a','b','c'], 0)
 * @key 待插入的值
 **/
 function insert(queueSet, key) {
-    // 答案数组
     var newQueueSet = [] // 新的队列集合
     queueSet.forEach(queue => {
         for(var j = 0; j < queue.length + 1; j++){
