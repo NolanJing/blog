@@ -156,7 +156,6 @@ Maze.prototype.Animation = function () {
 
 ```CSS
 <!--CSS-->
-<style>
         #maze {
             margin: 0 auto;
             margin-top: 100px;
@@ -190,7 +189,6 @@ Maze.prototype.Animation = function () {
         .path {
             background-color: aqua;
         }
-    </style>
 ```
 
  
