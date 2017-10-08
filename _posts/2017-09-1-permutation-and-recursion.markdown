@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "再谈递归之全排列"
+title:      "JS手撸数据结构系列 (七) ——再谈递归之全排列"
 subtitle:   "Keynote: Javaascript Permutation Recursion"
 date:       2017-09-1
 author:     "Nolan"
