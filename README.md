@@ -18,7 +18,7 @@
 
 
 1. [图片懒加载、去抖与节流](https://nolanjing.github.io/blog/2017/09/15/lazyload-debounce-and-throttle/)
-96. [理解异步(一)——LazyMan](https://nolanjing.github.io/blog/2017-10-3-synchronous-lazyMan/)
+2. [理解异步(一)——LazyMan](https://nolanjing.github.io/blog/2017/10/03/synchronous-lazyMan/)
 
 
 
