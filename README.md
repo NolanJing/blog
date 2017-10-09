@@ -17,12 +17,14 @@
 ## JS
 
 
-1. [图片懒加载、去抖与节流](https://nolanjing.github.io/blog/2017/09/15/lazyload-debounce-and-throttle/)
-2. [理解异步(一)——LazyMan](https://nolanjing.github.io/blog/2017/10/03/synchronous-lazyMan/)
+
+1. [理解异步(一)——LazyMan流程控制](https://nolanjing.github.io/blog/2017/10/03/synchronous-lazyMan/)
+2. [理解异步(二)——jQuery的Deferred对象](https://nolanjing.github.io/blog/2017/10/09/waiter-pattern/)
 
 ## 前端应用
 
 1. [图片加载中占位符与失败重连](https://nolanjing.github.io/blog/2017/06/23/img-loading-alt/)
+2. [图片懒加载、去抖与节流](https://nolanjing.github.io/blog/2017/09/15/lazyload-debounce-and-throttle/)
 
 
 

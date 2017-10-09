@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "理解异步(一)——LazyMan（上）"
+title:      "理解异步(一)——LazyMan流程控制"
 subtitle:   "Keynote: LazyMan Asynchronous Flow-Control"
 date:       2017-10-3
 author:     "Nolan"
