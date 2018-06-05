@@ -10,7 +10,7 @@ tags:
     - waiter pattern
 ---
 <p align="center"> <font size=36>基于视觉技术的雨量监测与分级</font> </p> 
-#1. 背景
+#1. 背景#
 　　中国经济实力不断提升，公路交通快速发展，使得汽车数量逐年增加，道路交通问题日益突出，特别是阴雨天，由于司机视野受限，交通事故频繁。
 
 　　　　　　　　　　　　　　　　　　　　　![雨天司机视野](https://i.imgur.com/mX3yZnU.jpg)
